@@ -1,0 +1,88 @@
+.facture{
+  border: solid 1px #FF9F07;
+  overflow: hidden;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.fact-l-1 > p, .fact-l-2 > p{
+  display: inline-block;
+}
+
+.fact-l-2{
+  margin-top: 5px;
+}
+
+.fact-l-3{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 225px;
+  width: 540px;
+}
+
+.fact-l-4{
+  display: inline-block;
+  margin-top: 10px;
+  text-align: right;
+  width: 100px;
+}
+
+.text-fact{
+  font-size: 22px;
+}
+
+.id-facture{
+  color: #FF4A07;
+  margin: 15px 0 0 20px;
+  width: 130px;
+}
+
+.facture-client{
+  text-decoration: underline;
+  font-weight: bold;
+  width: 598px;
+}
+
+.date-facture{
+  color: #FF9F07;
+}
+
+.fact-confirmation{
+  color: #09AAC1;
+  margin-left: 155px;
+  width: 630px;
+}
+
+.fact-total{
+  color: #09AAC1;
+  text-align: right;
+  width: 80px;
+}
+
+.fact-detail{
+  text-decoration: underline;
+  color: #000708;
+  margin-left: 145px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fact-l-5{
+  display: inline-block;
+  margin-left: 130px;
+}
+
+.fact-l-6{
+  margin-top: 5px;
+  width: 100%
+}
+
+.block-detail{
+  display: none;
+}
+
+.rabais{
+  color: #FF4A07;
+}

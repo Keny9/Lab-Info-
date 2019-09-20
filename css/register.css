@@ -1,0 +1,77 @@
+/*Couleurs :
+- Rouge : #FF4A07
+- Orange : #FF9F07
+- Bleu : #09AAC1
+- Blanc : #FFFAFB
+- Noir : #000708
+- Dégradé dans l’entête: linear-gradient(#09AAC1, #FFFAFB)
+Police
+- Century Gothic*/
+
+
+.form_register{
+  border: 2px solid #FF9F07;
+  padding: 10px;
+  width:1000px;
+  display: inline-block;
+  text-align: left;
+}
+.black_p{
+  font-size: 14px;
+  color: #000708;
+}
+
+.red_p{
+  font-size: 10px;
+  color:#FF4A07;
+}
+main{
+  text-align:center;
+}
+
+div .input_block{
+  padding-bottom:20px;
+}
+
+input[type="text"] {
+  font-size:12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input::placeholder{
+    color:#FF9F07;
+}
+
+div .input{
+  padding: 5px;
+  box-sizing: border-box;
+}
+label{
+  color:#09AAC1;
+  font-size:12px;
+}
+
+button{
+  border: 1px solid #FF8C00;
+  border-radius: 2em;
+  height: 2em;
+  background-image: linear-gradient(#FFFAFB, #FF9F07);
+  color: white;
+  float:right;
+}
+[class*="col"]{
+  float:left;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}

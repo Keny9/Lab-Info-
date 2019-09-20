@@ -1,0 +1,81 @@
+.vingt_six_px{
+    font-size: 26px;
+}
+
+.content{
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.block-login{
+  margin: 0 auto;
+  width: 40%;
+  display: block;
+}
+
+.left_align{
+  text-align: left;
+}
+
+input{
+  display:block;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 75%;
+  height: 30px;
+}
+
+input::placeholder{
+  color:#FF9F07;
+}
+
+.forgot{
+  color: #FF4A07;
+  margin-left:50px;
+}
+
+.buttons{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align:center;
+  width:360px;
+}
+
+button{
+  width: 170px;
+  border: 1px solid #FF8C00;
+  border-radius: 2em;
+  height: 2em;
+  background-image: linear-gradient(#FFFAFB, #FF9F07);
+  color: white;
+}
+.login_contain{
+  width:180px;
+  float:left;
+  text-align:left;
+}
+.register_contain{
+  width:180px;
+  float:right;
+  text-align:right;
+}
+
+[class*="col"]{
+  float:left;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}

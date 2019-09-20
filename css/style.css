@@ -1,0 +1,205 @@
+html{
+  height: 100%;
+}
+
+*{
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  box-sizing:border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+  background: #FFFAFB;
+  height: 100%;
+}
+
+header{
+  height: 150px;
+  background-image: linear-gradient(#09AAC1, #FFFAFB);
+}
+
+main{
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+
+.entete{
+ width: 1200px;
+ margin: 0 auto;
+}
+
+#logo{
+  margin: 25px 0 0 30px;
+}
+
+.identification{
+  font-size: 18px;
+  float: right;
+  margin: 15px 35px;
+}
+
+.link{
+  color: #FFFAFB;
+  padding: 10px;
+}
+
+.client-link{
+  font-size: 26px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #FF9F07;
+}
+
+.client-group-link{
+  padding-right: 45px;
+}
+
+.menu{
+  margin-left: 50%;
+  margin-right: 45px;
+  float: right;
+}
+
+.form-recherche{
+  display: inline-block;
+  max-height: 26px;
+}
+
+.boite_recherche{
+  display: none;
+  border: 1px solid #FF9F07;
+  width: 185px;
+  height: auto;
+  position: absolute;
+  background-image: linear-gradient(#FFFAFB,#FFFAFB, #09AAC1);
+}
+
+.boite_recherche > input{
+  margin-left: 10%;
+  margin-top: 5px;
+  background: transparent;
+  border: 1px solid #000708;
+}
+
+.boite_recherche > button{
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 125px;
+  width: 40px;
+  border-radius: 2em;
+  border-color: #FF9F07;
+  border-style: solid;
+  background-image: linear-gradient(#FFFAFB, #FF9F07);
+}
+
+.boite_recherche > input::placeholder{
+  color: #FF9F07;
+}
+
+#recherche{
+  background: transparent;
+  border: 1px inset #000708;
+  height: 26px;
+  max-width: 147px;
+  padding-right: 30px;
+}
+
+.bouton_recherche{
+  background: none;
+  border: none;
+  position: relative;
+  left: -35px;
+  top: 5px;
+}
+
+.cours-d{
+  border: solid 1px #FF9F07;
+  overflow: hidden;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  margin-top: 15px;
+}
+
+.cata-gauche{
+  width: 20%;
+  min-height: 240px;
+  margin: 10px 0 0 20px;
+  color: #FF4A07;
+  float: left;
+}
+
+.cata-gauche > img{
+  width: 212px;
+  height: 168px;
+}
+
+.cata-droite{
+  width: 75%;
+  float: left;
+  margin: 10px 0 0 20px;
+  word-wrap: break-word;
+}
+
+.cata-titre{
+  font-size: 26px;
+}
+
+.cata-texte{
+  font-size: 22px;
+  overflow-wrap: break-word;
+}
+
+.cata-tarif{
+  display: inline-block;
+  width: 40%;
+  margin-left: 20px;
+  margin-top: 15px;
+  color: #09AAC1;
+}
+
+.cata-duree{
+  display: inline-block;
+  width: 27%;
+  color: #FF9F07;
+}
+
+.panier{
+  width: 45px;
+  position: relative;
+  top: 10px;
+  cursor: pointer;
+}
+
+.service-promo{
+  width: 65%;
+  display: inline-block;
+  margin: 15px 0 0 20px;
+}
+
+.service-promo > img{
+  width: 75px;
+  height: auto;
+  margin-right: 35px;
+  border: 1px solid #000708;
+}
+
+.res-sociaux{
+  display: inline-block;
+}
+
+.res-sociaux > img{
+  height: auto;
+  width: 75px;
+}
+
+.fas{
+  color: #09AAC1;
+  position: relative;
+  bottom: 15px;
+  cursor: pointer;
+}
