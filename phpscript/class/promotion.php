@@ -47,11 +47,13 @@
     }
 
     public function setDateFin($dateFin){
-      $this->dateFin = $dateFin;
+      $date = substr($dateFin, 0, -9);
+      $this->dateFin = $date;
     }
 
     public function setDateDebut($dateDebut){
-      $this->dateDebut = $dateDebut;
+      $date = substr($dateDebut, 0, -9);
+      $this->dateDebut = $date;
     }
 
     public function setImage($image){

@@ -8,6 +8,7 @@
 
     <div class="menu">
       <span class="client-group-link"><a id="service" class="client-link" href="service.php">Service</a></span>
+      <span class="client-group-link"><a id="promotion" class="client-link" href="#">Promotion</a></span>
       <span class="client-group-link"><a id="facture" class="client-link" href="facture.php">Facture</a></span>
 
       <form class="form-recherche" action="../phpscript/rechercheAdmin.php" method="post">

@@ -58,8 +58,8 @@ main{
 }
 
 .menu{
-  margin-left: 50%;
-  margin-right: 45px;
+  margin-left: 35%;
+  margin-right: 25px;
   float: right;
 }
 
@@ -127,7 +127,7 @@ main{
 
 .cata-gauche{
   width: 20%;
-  min-height: 240px;
+  max-height: 210px;
   margin: 10px 0 0 20px;
   color: #FF4A07;
   float: left;
@@ -145,8 +145,15 @@ main{
   word-wrap: break-word;
 }
 
+.cata-haut{
+  height: auto;
+  overflow: hidden;
+}
+
 .cata-titre{
   font-size: 26px;
+  display: inline-block;
+  width: 700px;
 }
 
 .cata-texte{
@@ -162,6 +169,16 @@ main{
   color: #09AAC1;
 }
 
+.cata-vide{
+  width: 240px;
+  height: auto;
+  display: inline-block;
+}
+
+.cata-detail{
+  display: inline;
+}
+
 .cata-duree{
   display: inline-block;
   width: 27%;
@@ -175,19 +192,6 @@ main{
   cursor: pointer;
 }
 
-.service-promo{
-  width: 65%;
-  display: inline-block;
-  margin: 15px 0 0 20px;
-}
-
-.service-promo > img{
-  width: 75px;
-  height: auto;
-  margin-right: 35px;
-  border: 1px solid #000708;
-}
-
 .res-sociaux{
   display: inline-block;
 }
@@ -197,9 +201,57 @@ main{
   width: 75px;
 }
 
+.promo{
+  display: inline-block;
+  width: 900px;
+}
+
+.text-promo{
+  color: #FF4A07;
+  font-size: 22px;
+  margin-left: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.promotion{
+  display: inline-block;
+  text-decoration: underline;
+  margin-left: 120px;
+  width: 500px;
+}
+
+.promotion:visited{
+  color: #000000;
+}
+
 .fas{
   color: #09AAC1;
   position: relative;
   bottom: 15px;
+  cursor: pointer;
+}
+
+.link-service{
+  margin-left: 950px;
+  font-size: 22px;
+  color: #09AAC1;
+}
+
+.link-service:visited{
+  color: #09AAC1;
+}
+
+.link-modifier{
+  font-size: 20px;
+  color: #09AAC1;
+}
+
+.link-modifier:visited{
+  color: #09AAC1;
+}
+
+#add-promo{
+  margin-left: 120px;
   cursor: pointer;
 }

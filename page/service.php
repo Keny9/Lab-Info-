@@ -1,4 +1,6 @@
 <?php
+  setlocale(LC_TIME, "fr_FR");
+
   session_start();
   // Si non logged in
   if (!(isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')) {
@@ -10,8 +12,10 @@
 
   require_once('../phpscript/class/classService.php');
   require_once('../phpscript/class/gestionService.php');
+  require_once('../phpscript/class/gestionPromotion.php');
 
   $gestionService = new GestionService();
+  $gestionPromotion = new GestionPromotion();
 
   $arrService = $gestionService->getAllService();
 
@@ -39,40 +43,60 @@
     <?php include '../entete/administrateur.php'?>
 
     <main>
+      <a class="link-service" href="#">Ajouter un service</a>
       <?php
-        foreach($arrService as $service){
-          echo "<div class='cours-d'>
-            <div class='cata-gauche'>
-              <img src='".$service->getImage()."' alt='Excel Debutant'><br><br>
-              <p class='cata-texte'>Promotions :</p>
-            </div>
+        if($arrService != null){
+          foreach($arrService as $service){
+            echo "
+            <div class='cours-d'>
+              <div class='cata-haut'>
+                <div class='cata-gauche'>
+                  <img src='".$service->getImage()."' alt='Excel Debutant'><br><br>
+                </div>
 
-            <div class='cata-droite'>
-              <p class='cata-titre'>".$service->getTitre()."</p><br>
-              <p class='cata-texte'>".$service->getDescription()."</p>
-            </div>
+                <div class='cata-droite'>
+                  <p class='cata-titre'>".$service->getTitre()."</p>
+                  <a class='link-modifier' href='#'>Modifier</a><br><br>
+                  <p class='cata-texte'>".$service->getDescription()."</p>
+                </div>
 
-            <div class='cata-tarif'>
-              <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
-            </div>
+                <div class='cata-tarif'>
+                  <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
+                </div>
 
-            <div class='cata-duree'>
-              <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
-            </div>
+                <div class='cata-duree'>
+                  <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
+                </div>
+              </div>
 
-            <div class='service-promo'>
-              <img src='../images/promotions/25.png' alt='25%'>
-              <img src='../images/promotions/25.png' alt='25%'>
-              <img src='../images/promotions/10.png' alt='10%'>
-              <i class='fas fa-plus fa-3x'></i>
-            </div>
+              <div class='promo'>
+                <p class='text-promo'>Promotions :</p>";
 
-            <div class='res-sociaux'>
-              <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>
-            </div>
+                  $arrPromotion = $gestionPromotion->getPromotionOfService($service->getId());
 
-          </div>";
+                  if($arrPromotion != null){
+                    foreach($arrPromotion as $promotion){
+                      echo "<a href='#' class='promotion'>- ".$promotion->getTitre()." (du ".strftime("%e %B", strtotime($promotion->getDateDebut()))." au ".strftime("%e %B", strtotime($promotion->getDateFin())).")</a>";
+                    }
+                  }
+                  else{
+                    echo "<a class='promotion'></a>";
+                  }
+
+                echo
+                "<img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'>
+              </div>
+              <div class='res-sociaux'>
+                <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>
+              </div>
+
+            </div>";
+          }
         }
+        else{
+          echo "<p class='cata-texte'>Désolé, aucun service correspond à la recherche.</p>";
+        }
+
       ?>
 
 
