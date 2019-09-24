@@ -1,0 +1,92 @@
+#imgService{
+  border: 1px solid #000000;
+}
+
+.text-modif{
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.msgService{
+  color: #FF4A07;
+  margin-left: 25px;
+}
+
+input{
+  border: 1px solid #000000;
+  padding: 5px;
+}
+
+.input-td{
+  width: 98%;
+  height: auto;
+}
+
+#description{
+  width: 792px;
+  height: 100px;
+  font-size: 22px;
+  color: #000000;
+}
+
+textarea{
+  resize: none;
+  border: 1px solid #000000;
+  padding: 5px;
+}
+
+.img-update{
+  display: inline-block;
+  width: 212px;
+  height: 50px;
+  margin-left: 20px;
+  padding-left: 5px;
+  border: 1px solid #000000;
+}
+
+.cata-gauche{
+  height: 168px;
+}
+
+.cata-haut{
+  height: 178px;
+}
+
+.camera{
+  display: inline-block;
+  width: 40%;
+  font-size: 36px;
+  text-align: right;
+}
+
+.fa{
+  cursor: pointer;
+}
+
+.text-img-u{
+  display: inline-block;
+  width: 50%;
+}
+
+.tarif-heure{
+  display: inline-block;
+  margin-left: 20px;
+}
+
+label{
+  font-size: 22px;
+}
+
+#prix{
+  color: #09AAC1;
+  font-size: 22px;
+  text-align: right;
+  width: 100px;
+}
+
+#heure{
+  color: #FF9F07;
+  font-size: 22px;
+  text-align: right;
+  width: 75px;
+}

@@ -4,7 +4,12 @@ $(document).ready(function() {
   var page = path.split("/").pop();
   page = page.replace(".php", "");
 
-  $("#" + page).css("color","#FF4A07");
+  if(page == "serviceModification"){
+    $("#service").css("color","#FF4A07");
+  }
+  else{
+    $("#" + page).css("color","#FF4A07");
+  }
 
   if(page == "facture"){
     document.getElementById("loupe").disabled = true;
