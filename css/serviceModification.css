@@ -90,3 +90,62 @@ label{
   text-align: right;
   width: 75px;
 }
+
+.activer-service{
+  display: inline-block;
+  position: relative;
+  margin-left: 255px;
+  margin-top: 15px;
+  font-size: 22px;
+  user-select: none;
+}
+
+.activer-service > input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  border: 1px solid #000000;
+  padding-left: 7px;
+}
+
+.checkmark::after{
+  display: inline;
+  content: attr(data-content);
+  color: #09AAC1;
+  font-weight: bold;
+}
+
+.text-activer{
+  color: #09AAC1;
+  font-size: 22px;
+  margin-left: 35px;
+}
+
+.button-contain{
+  display: block;
+  width:180px;
+  text-align:left;
+  margin-left: 900px;
+  margin-top: 15px;
+}
+
+.text-button{
+    font-size: 26px;
+    width: 160px;
+    border: 1px solid #FF8C00;
+    border-radius: 2em;
+    height: 2em;
+    background-image: linear-gradient(#FFFAFB, #FF9F07);
+    color: white;
+}

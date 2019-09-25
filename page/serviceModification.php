@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/entete.js"></script>
+    <script type="text/javascript" src="../js/serviceModif.js"></script>
     <title>Info++</title>
   </head>
   <body>
@@ -56,6 +57,15 @@
           <input type="text" name="prix" value="200" id="prix">
         </div>
 
+        <div class="activer-service">
+          <input type="checkbox" id="checkService" name="actif-service" value="" checked="checked">
+          <span id="checkmark" class="checkmark" onclick="actionCheckmark()"></span>
+          <span class="text-activer">Activer le service dans le catalogue</span>
+        </div>
+
+        <div class="button-contain">
+          <button class="text-button" type="button" id="ajout-service">Confirmer</button>
+        </div>
 
       </div>
     </main>
