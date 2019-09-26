@@ -1,4 +1,9 @@
 <?php
+
+  require_once('../phpscript/class/classService.php');
+  require_once('../phpscript/class/gestionService.php');
+  require_once('../phpscript/class/gestionPromotion.php');
+  
   setlocale(LC_TIME, "fr_FR");
 
   session_start();
@@ -9,10 +14,6 @@
   else if($_SESSION['user_administrateur'] == 0){
     header("Location:catalogue.php");
   } //Si administrateur
-
-  require_once('../phpscript/class/classService.php');
-  require_once('../phpscript/class/gestionService.php');
-  require_once('../phpscript/class/gestionPromotion.php');
 
   $gestionService = new GestionService();
   $gestionPromotion = new GestionPromotion();
@@ -26,6 +27,13 @@
   else{
     $arrService = $gestionService->getAllService();
   }
+
+  if(!isset($_SESSION['service'])){
+    $_SESSION['service'] = $arrService;
+  }
+
+  //Passer l'index choisi dans le lien en parametre
+  $i = 0;
 
 ?>
 
@@ -43,7 +51,7 @@
     <?php include '../entete/administrateur.php'?>
 
     <main>
-      <a class="link-service" href="#">Ajouter un service</a>
+      <a class="link-service" href="./serviceModification.php">Ajouter un service</a>
       <?php
         if($arrService != null){
           foreach($arrService as $service){
@@ -56,7 +64,7 @@
 
                 <div class='cata-droite'>
                   <p class='cata-titre'>".$service->getTitre()."</p>
-                  <a class='link-modifier' href='#'>Modifier</a><br><br>
+                  <a class='link-modifier' href='./serviceModification.php?index=$i'>Modifier</a><br><br>
                   <p class='cata-texte'>".$service->getDescription()."</p>
                 </div>
 
@@ -91,6 +99,7 @@
               </div>
 
             </div>";
+            $i++; //Incrementation de l'index
           }
         }
         else{

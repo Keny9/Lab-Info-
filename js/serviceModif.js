@@ -13,3 +13,7 @@ function actionCheckmark(){
     checkmark.setAttribute('data-content', "X");
   }
 }
+
+function modifier(service){
+  console.log(service);
+}
