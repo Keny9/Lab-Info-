@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `lab_app_media`
-
+-- DROP DATABASE lab1_hypermedia;
 
 CREATE DATABASE IF NOT EXISTS lab1_hypermedia;
 USE lab1_hypermedia;
@@ -552,3 +552,7 @@ WHERE pk_facture = 1;
 SELECT * FROM facture f
 INNER JOIN client c ON f.fk_client = c.pk_client
 WHERE CONCAT(c.prenom, " ", c.nom) LIKE '%Marc Beaudoin%';
+
+UPDATE service
+SET service_titre = 'Allo', service_description = 'Je suis beau', duree = 18 , tarif = 225.00, actif = 1, image = '../images/services/CoursAccess.png'
+WHERE pk_service = 11;

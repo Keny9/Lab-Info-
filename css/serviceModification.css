@@ -73,7 +73,7 @@ textarea{
   margin-left: 20px;
 }
 
-label{
+.label-service{
   font-size: 22px;
 }
 
@@ -148,4 +148,13 @@ label{
     height: 2em;
     background-image: linear-gradient(#FFFAFB, #FF9F07);
     color: white;
+}
+
+#file-input{
+  display: none;
+}
+
+.error{
+  color: #FF4A07;
+  text-align: center;
 }

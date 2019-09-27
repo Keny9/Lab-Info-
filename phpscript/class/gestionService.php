@@ -64,12 +64,82 @@ class GestionService{
     while($row = mysqli_fetch_assoc($result)){
       $service[] = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image']);
     }
-    
+
     $stmt->close();
     return $service;
   }
 
+  /**
+  * Fonction qui permet d'obtenir le dernier id d'un service
+  */
+  public function getLastId(){
+    $connexion = new Connexion();
+    $conn = $connexion->getConnexion();
 
+    $stmt = $conn->prepare("SELECT MAX(pk_service) FROM service;");
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if(!$result){
+      die('Could not query:' . mysqli_error());
+    }
+
+    $row = $result->fetch_assoc();
+    $lastId = $row['MAX(pk_service)'];
+
+    $stmt->close();
+    return $lastId;
+  }
+
+  //Fonction qui permet de mettre à jour un service
+  public function updateService($service){
+    $connexion = new Connexion();
+    $conn = $connexion->getConnexion();
+
+    $stmt = $conn->prepare("UPDATE service
+                            SET service_titre = ?, service_description = ?, duree = ?, tarif = ?, actif = ?, image = ?
+                            WHERE pk_service = ?;");
+    $stmt->bind_param("ssidisi", $titre, $description, $duree, $tarif, $actif, $image, $id);
+
+    //set parameters
+    $titre = $service->getTitre();
+    $description = $service->getDescription();
+    $duree = $service->getDuree();
+    $tarif = $service->getTarif();
+    $actif = $service->getActif();
+    $image = $service->getImage();
+    $id = $service->getId();
+
+    $stmt->execute();
+
+    $stmt->close();
+  }
+
+  /**
+  * @param service Un nouveau service a ajouter a la base de donnee
+  */
+  public function addService($service){
+    $connexion = new Connexion();
+    $conn = $connexion->getConnexion();
+
+    $stmt = $conn->prepare("INSERT INTO service (pk_service, service_titre, service_description, duree, tarif, actif, image) VALUES
+                          (?, ?, ?, ?, ?, ?, ?);");
+    $stmt->bind_param("issidis", $id, $titre, $description, $duree, $tarif, $actif, $image);
+
+    //set parameters
+    $id = $this->getLastId();
+    $titre = $service->getTitre();
+    $description = $service->getDescription();
+    $duree = $service->getDuree();
+    $tarif = $service->getTarif();
+    $actif = $service->getActif();
+    $image = $service->getImage();
+
+    $stmt->execute();
+    $stmt->close();
+
+  }
 
 }
 

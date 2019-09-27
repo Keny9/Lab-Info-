@@ -20,6 +20,8 @@
 
     //Obtenir l'objet
     $service = $_SESSION['service'][$i];
+
+    $_SESSION['indexService'] = $_GET['index'];
   }
   else{
     $service = new Service(1,"","","","","","../images/services/cours.gif");
@@ -41,9 +43,18 @@
   </head>
   <body>
     <?php include '../entete/administrateur.php';?>
+    <?php
+      if(isset($_SESSION['error'])){
+        echo "<div class='error'>
+                <p>".$_SESSION['errorMsg'].
+              "</div>";
 
+        unset($_SESSION['error']);
+        unset($_SESSION['errorMsg']);
+      }
+     ?>
     <main>
-      <form action="#" method="post">
+      <form enctype="multipart/form-data" action="../phpscript/ajoutModifService.php" method="post">
         <div class="cours-d">
           <p class="cata-texte text-modif">Vous pouvez modifier les informations du service</p>
           <p class="msgService">Tous les champs sont obligatoires</p>
@@ -60,14 +71,17 @@
 
           <div class="img-update">
             <p class="text-img-u">Mettre à jour la photo</p>
-            <div class="camera"><i class="fa fa-camera"></i></div>
+            <div class="camera">
+              <label for="file-input"><i class="fa fa-camera"></i></label>
+              <input type="file" name="file" id="file-input" onchange="changeURL(this);">
+            </div>
           </div>
 
           <div class="tarif-heure">
-            <label for="heure">Durée: (h)</label>
+            <label class="label-service" for="heure">Durée: (h)</label>
             <input type="text" name="heure" value="<?php echo $service->getDuree(); ?>" id="heure">
-            <label for="prix">Prix:</label>
-            <input type="text" name="prix" value="<?php echo $service->getTarif(); ?>" id="prix">
+            <label class="label-service" for="prix">Prix:</label>
+            <input type="text" name="prix" onfocusout="checkZero()" value="<?php echo $service->getTarif(); ?>" id="prix">
           </div>
 
           <div class="activer-service">
@@ -77,7 +91,7 @@
           </div>
 
           <div class="button-contain">
-            <button class="text-button" type="submit" id="ajout-service">Confirmer</button>
+            <button class="text-button" type="submit" id="ajout-service" name="submit" onclick="return validateFormService()">Confirmer</button>
           </div>
 
         </div>
