@@ -10,7 +10,7 @@
       header("Location:../page/facture.php");
   }
   else if(isset($_POST['service']) && "" != trim($_POST['service'])){
-      $_SESSION['service'] = $_POST['service'];
+      $_SESSION['serviceFact'] = $_POST['service'];
       header("Location:../page/service.php");
   }
   else if(isset($_POST['recherche']) && "" != trim($_POST['recherche'])){

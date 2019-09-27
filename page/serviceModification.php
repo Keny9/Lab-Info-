@@ -14,14 +14,12 @@
 
   $gestionService = new GestionService();
 
-  if(isset($_GET['index'])){
-    //Recuperer l'index de l'objet choisi
-    $i = $_GET['index'];
+  if(isset($_GET['id'])){
 
     //Obtenir l'objet
-    $service = $_SESSION['service'][$i];
+    $service = $gestionService->getService($_GET['id']);
 
-    $_SESSION['indexService'] = $_GET['index'];
+    $_SESSION['serviceId'] = $service;
   }
   else{
     $service = new Service(1,"","","","","","../images/services/cours.gif");
@@ -79,7 +77,7 @@
 
           <div class="tarif-heure">
             <label class="label-service" for="heure">Durée: (h)</label>
-            <input type="text" name="heure" value="<?php echo $service->getDuree(); ?>" id="heure">
+            <input type="text" name="heure" onfocusout="verifieSiHeureNombre()" value="<?php echo $service->getDuree(); ?>" id="heure">
             <label class="label-service" for="prix">Prix:</label>
             <input type="text" name="prix" onfocusout="checkZero()" value="<?php echo $service->getTarif(); ?>" id="prix">
           </div>

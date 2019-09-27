@@ -86,7 +86,7 @@ class GestionService{
     }
 
     $row = $result->fetch_assoc();
-    $lastId = $row['MAX(pk_service)'];
+    $lastId = $row['MAX(pk_service)'] + 1;
 
     $stmt->close();
     return $lastId;
@@ -111,7 +111,13 @@ class GestionService{
     $image = $service->getImage();
     $id = $service->getId();
 
-    $stmt->execute();
+    $status = $stmt->execute();
+    /* check whether the execute() succeeded */
+    if ($status === false) {
+      trigger_error($stmt->error, E_USER_ERROR);
+    }
+
+    printf("%d Row inserted.\n", $stmt->affected_rows);
 
     $stmt->close();
   }
@@ -140,7 +146,7 @@ class GestionService{
     $stmt->close();
 
   }
-
+  
 }
 
 ?>

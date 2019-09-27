@@ -3,7 +3,7 @@
   require_once('../phpscript/class/classService.php');
   require_once('../phpscript/class/gestionService.php');
   require_once('../phpscript/class/gestionPromotion.php');
-  
+
   setlocale(LC_TIME, "fr_FR");
 
   session_start();
@@ -24,11 +24,15 @@
       $arrService = $gestionService->getServiceBySearch($_SESSION['recherche']);
       unset($_SESSION['recherche']);
   }
+  else if(isset($_SESSION['serviceFact']) && "" != trim($_SESSION['serviceFact'])){
+    $arrService = $gestionService->getServiceBySearch($_SESSION['serviceFact']);
+    unset($_SESSION['serviceFact']);
+  }
   else{
     $arrService = $gestionService->getAllService();
   }
 
-  if(!isset($_SESSION['service'])){
+  if(!isset($_SESSION['serviceFact'])){
     $_SESSION['service'] = $arrService;
   }
 
@@ -55,50 +59,52 @@
       <?php
         if($arrService != null){
           foreach($arrService as $service){
-            echo "
-            <div class='cours-d'>
-              <div class='cata-haut'>
-                <div class='cata-gauche'>
-                  <img src='".$service->getImage()."' alt='Excel Debutant'><br><br>
+            if($service->getActif() == 1){
+              echo "
+              <div class='cours-d'>
+                <div class='cata-haut'>
+                  <div class='cata-gauche'>
+                    <img src='".$service->getImage()."' alt='Excel Debutant'><br><br>
+                  </div>
+
+                  <div class='cata-droite'>
+                    <p class='cata-titre'>".$service->getTitre()."</p>
+                    <a class='link-modifier' href='./serviceModification.php?id=".$service->getId()."'>Modifier</a><br><br>
+                    <p class='cata-texte'>".$service->getDescription()."</p>
+                  </div>
+
+                  <div class='cata-tarif'>
+                    <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
+                  </div>
+
+                  <div class='cata-duree'>
+                    <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
+                  </div>
                 </div>
 
-                <div class='cata-droite'>
-                  <p class='cata-titre'>".$service->getTitre()."</p>
-                  <a class='link-modifier' href='./serviceModification.php?index=$i'>Modifier</a><br><br>
-                  <p class='cata-texte'>".$service->getDescription()."</p>
-                </div>
+                <div class='promo'>
+                  <p class='text-promo'>Promotions :</p>";
 
-                <div class='cata-tarif'>
-                  <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
-                </div>
+                    $arrPromotion = $gestionPromotion->getPromotionOfService($service->getId());
 
-                <div class='cata-duree'>
-                  <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
-                </div>
-              </div>
-
-              <div class='promo'>
-                <p class='text-promo'>Promotions :</p>";
-
-                  $arrPromotion = $gestionPromotion->getPromotionOfService($service->getId());
-
-                  if($arrPromotion != null){
-                    foreach($arrPromotion as $promotion){
-                      echo "<a href='#' class='promotion'>- ".$promotion->getTitre()." (du ".strftime("%e %B", strtotime($promotion->getDateDebut()))." au ".strftime("%e %B", strtotime($promotion->getDateFin())).")</a>";
+                    if($arrPromotion != null){
+                      foreach($arrPromotion as $promotion){
+                        echo "<a href='#' class='promotion'>- ".$promotion->getTitre()." (du ".strftime("%e %B", strtotime($promotion->getDateDebut()))." au ".strftime("%e %B", strtotime($promotion->getDateFin())).")</a>";
+                      }
                     }
-                  }
-                  else{
-                    echo "<a class='promotion'></a>";
-                  }
+                    else{
+                      echo "<a class='promotion'></a>";
+                    }
 
-                echo
-                "<img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'>
-              </div>
-              <div class='res-sociaux'>
-                <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>
-              </div>
+                  echo
+                  "<img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'>
+                </div>
+                <div class='res-sociaux'>
+                  <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>
+                </div>
 
-            </div>";
+              </div>";
+            }
             $i++; //Incrementation de l'index
           }
         }
@@ -106,6 +112,8 @@
           echo "<p class='cata-texte'>Désolé, aucun service correspond à la recherche.</p>";
         }
 
+        unset($_SESSION['recherche']);
+        unset($_SESSION['serviceFact']);
       ?>
 
 

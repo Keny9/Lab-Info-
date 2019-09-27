@@ -19,7 +19,7 @@
   $gestionService = new GestionService();
   $gestionPromotion = new GestionPromotion();
 
-  if(isset($_SESSION['noFacture']) && "" != trim($_SESSION['noFacture'])){
+  if(isset($_SESSION['noFacture']) && "" != trim($_SESSION['noFacture']) && is_numeric($_SESSION['noFacture'])){
     $arrFacture = $gestionFacture->getFactureById($_SESSION['noFacture']);
     unset($_SESSION['noFacture']);
   }
@@ -130,6 +130,8 @@
           echo "<p class='cata-texte'>Désolé, aucune facture correspond à la recherche.</p>";
         }
 
+        unset($_SESSION['noFacture']);
+        unset($_SESSION['nomClient']);
       ?>
 
     </main>
