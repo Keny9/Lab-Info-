@@ -97,7 +97,7 @@
                     }
 
                   echo
-                  "<img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'>
+                  "<a href='promotionService.php'><img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'></a>
                 </div>
                 <div class='res-sociaux'>
                   <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>

@@ -4,7 +4,7 @@ $(document).ready(function() {
   var page = path.split("/").pop();
   page = page.replace(".php", "");
 
-  if(page == "serviceModification"){
+  if(page == "serviceModification" || page == "promotionService"){
     $("#service").css("color","#FF4A07");
   }
   else{

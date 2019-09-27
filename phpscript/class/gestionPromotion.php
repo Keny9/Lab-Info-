@@ -32,5 +32,28 @@
       $stmt->close();
       return $promotion;
     }
+
+    //Obtenir toutes les promotions de la bd
+    public function getAllPromotion(){
+      $connexion = new Connexion();
+      $conn = $connexion->getConnexion();
+
+      $stmt = $conn->prepare("SELECT * FROM promotion;");
+
+      $stmt->execute();
+      $result = $stmt->get_result();
+
+      if($result->num_rows == 0){
+        $arrPromotion = null;
+        return $arrPromotion;
+      }
+
+      while($row = $result->fetch_assoc()){
+        $arrPromotion[] = new Promotion($row['pk_promotion'],$row['promotion_titre'],$row['promotion_description'],$row['rabais'],$row['image'],null,null,null);
+      }
+
+      $stmt->close();
+      return $arrPromotion;
+    }
   }
  ?>

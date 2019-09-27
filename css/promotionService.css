@@ -1,0 +1,82 @@
+.box{
+  display: inline-block;
+  position: relative
+}
+
+.box select{
+  background : #FFFFFF;
+  color: #FF9F07;
+  padding: 5px;
+  padding-right: 50px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid black;
+  font-weight: 700;
+  font-size: 16px;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+}
+
+.box:before{
+  content: '\f0dd';
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  text-align: center;
+  color: #FF9F07;
+  line-height: 30px;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 38px;
+  border: 1px solid black;
+  pointer-events: none;
+}
+
+.box-color-before:before{
+  color: #fff;
+}
+
+.box option{
+  background-color: #FFFFFF;
+  font-weight:normal;
+  color: #000000;
+}
+
+select::-ms-expand {
+    display: none; /* Hide the default arrow in Internet Explorer 10 and Internet Explorer 11 */
+}
+
+.promo-haut{
+  display: block;
+  margin-top: 15px;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.promo-haut label{
+  margin-left: 10px;
+}
+
+.promo-milieu{
+  margin-left: 15px;
+}
+
+.date{
+  margin-left: 17px;
+}
+
+.date input{
+  margin-right: 50px;
+  margin-top: 10px;
+}
+
+.code{
+  margin-left: 10px;
+  width: 530px;
+}
+
+.code input{
+  margin-left: 20px;
+  margin-top: 10px;
+}
