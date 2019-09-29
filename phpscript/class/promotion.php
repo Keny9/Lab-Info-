@@ -7,6 +7,7 @@
   class Promotion{
 
     private $id;
+    private $idPromoService; //id ta_promo_service
     private $titre;
     private $description;
     private $rabais;
@@ -14,13 +15,14 @@
     private $dateDebut; //Si promo appliquer sur un service pour qu'il y ait une date
     private $dateFin;
     private $code; //Si promo est appliqué sur un service
-    private $service; //Service auquel la promotion est associé s'il y a lieu
+    private $service; //Service auquel la promotion est associé s'il y a lieu (ID)
 
     /**
     * Constructeur d'une promotion
     */
-    function __construct($id,$titre,$description,$rabais,$image,$dateDebut,$dateFin,$code){
+    function __construct($id,$idPromoService,$titre,$description,$rabais,$image,$dateDebut,$dateFin,$code,$service){
       $this->setId($id);
+      $this->setIdPromoService($idPromoService);
       $this->setTitre($titre);
       $this->setDescription($description);
       $this->setRabais($rabais);
@@ -28,6 +30,11 @@
       $this->setDateDebut($dateDebut);
       $this->setDateFin($dateFin);
       $this->setCode($code);
+      $this->setService($service);
+    }
+
+    public function setIdPromoService($idPromoService){
+      $this->idPromoService = $idPromoService;
     }
 
     public function setId($id){
@@ -46,8 +53,8 @@
       $this->code = $code;
     }
 
-    public function setDateFin($dateFin){
-      $date = substr($dateFin, 0, -9);
+    public function setDateFin($dateFin){ 
+      $date = substr($dateFin, 0, -9); //TODO :Gosser avec les dates, c'est pour ca que les dates disparaissents
       $this->dateFin = $date;
     }
 
@@ -64,8 +71,20 @@
       $this->rabais = $rabais;
     }
 
+    public function setService($service){
+      $this->service = $service;
+    }
+
     public function getId(){
       return $this->id;
+    }
+
+    public function getIdPromoService(){
+      return $this->idPromoService;
+    }
+
+    public function getService(){
+      return $this->service;
     }
 
     public function getTitre(){

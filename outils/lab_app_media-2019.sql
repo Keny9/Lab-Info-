@@ -534,7 +534,7 @@ ORDER BY f.date_service DESC;
 SELECT * FROM ta_facture_service
 WHERE fk_facture = 1;
 
-SELECT p.promotion_titre, p.promotion_description, p.rabais, tps.date_debut, tps.date_fin, tps.code, s.service_titre FROM promotion AS p
+SELECT p.promotion_titre, p.promotion_description, p.rabais, tps.date_debut, tps.date_fin, tps.code, s.service_titre, s.pk_service FROM promotion AS p
 INNER JOIN ta_promotion_service tps ON p.pk_promotion = tps.fk_promotion
 INNER JOIN service s ON tps.fk_service = s.pk_service
 WHERE s.pk_service = 7;
@@ -556,3 +556,14 @@ WHERE CONCAT(c.prenom, " ", c.nom) LIKE '%Marc Beaudoin%';
 UPDATE service
 SET service_titre = 'Allo', service_description = 'Je suis beau', duree = 18 , tarif = 225.00, actif = 1, image = '../images/services/CoursAccess.png'
 WHERE pk_service = 11;
+
+SELECT MAX(pk_service) FROM service;
+
+SELECT p.pk_promotion, p.promotion_titre, p.promotion_description, p.rabais, p.image, tps.date_debut, tps.date_fin, tps.code, s.service_titre, s.pk_service FROM promotion AS p
+                              INNER JOIN ta_promotion_service tps ON p.pk_promotion = tps.fk_promotion
+                              INNER JOIN service s ON tps.fk_service = s.pk_service 
+                              WHERE tps.pk_promotion_service = 1;
+                              
+UPDATE service
+SET fk_promotion = ?, fk_service = ?, date_debut = ?, date_fin = ?, code = ?
+WHERE pk_promotion_service = ?;

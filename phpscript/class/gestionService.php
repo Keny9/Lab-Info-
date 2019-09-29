@@ -117,8 +117,6 @@ class GestionService{
       trigger_error($stmt->error, E_USER_ERROR);
     }
 
-    printf("%d Row inserted.\n", $stmt->affected_rows);
-
     $stmt->close();
   }
 
@@ -146,7 +144,7 @@ class GestionService{
     $stmt->close();
 
   }
-  
+
 }
 
 ?>

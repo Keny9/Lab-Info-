@@ -202,7 +202,6 @@ main{
 
 .promo{
   display: inline-block;
-  width: 900px;
 }
 
 .text-promo{
@@ -214,13 +213,31 @@ main{
 }
 
 .promotion{
-  display: inline-block;
+  display: block;
   text-decoration: underline;
-  margin-left: 120px;
-  width: 500px;
 }
 
-.promotion:visited{
+.left-promo{
+  display: inline-block;
+  width: 260px;
+}
+
+.right-promo{
+  display: inline-block;
+  vertical-align: top;
+  width: 715px;
+}
+
+.promo-add{
+  display: block;
+}
+
+.promotion a:visited{
+  text-decoration: underline;
+  color: #000000;
+}
+
+.promotion a{
   color: #000000;
 }
 
@@ -251,6 +268,7 @@ main{
 }
 
 #add-promo{
-  margin-left: 120px;
   cursor: pointer;
+  margin-left: 115px;
+  margin-top: 2px;
 }

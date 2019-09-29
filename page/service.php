@@ -83,21 +83,22 @@
                 </div>
 
                 <div class='promo'>
-                  <p class='text-promo'>Promotions :</p>";
-
+                <div class='left-promo'>
+                  <p class='text-promo'>Promotions :</p>
+                  <div class='promo-add'><a href='promotionService.php?id=".$service->getId()."'><img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'></a></div>
+                </div>";
                     $arrPromotion = $gestionPromotion->getPromotionOfService($service->getId());
+
+                    echo "<div class='right-promo'>";
 
                     if($arrPromotion != null){
                       foreach($arrPromotion as $promotion){
-                        echo "<a href='#' class='promotion'>- ".$promotion->getTitre()." (du ".strftime("%e %B", strtotime($promotion->getDateDebut()))." au ".strftime("%e %B", strtotime($promotion->getDateFin())).")</a>";
+                        echo "<span class='promotion'><a href='promotionService.php?id=".$service->getId()."&idPromo=".$promotion->getIdPromoService()."'>- ".$promotion->getTitre()." (du ".strftime("%e %B", strtotime($promotion->getDateDebut()))." au ".strftime("%e %B", strtotime($promotion->getDateFin())).")</a></span>";
                       }
-                    }
-                    else{
-                      echo "<a class='promotion'></a>";
                     }
 
                   echo
-                  "<a href='promotionService.php'><img id='add-promo' src='../images/promotions/add-button.png' alt='ajout-promotion'></a>
+                  "</div>
                 </div>
                 <div class='res-sociaux'>
                   <img src='../images/icones/medias sociaux.jpeg' alt='Médias sociaux'>

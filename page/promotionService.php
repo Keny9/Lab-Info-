@@ -13,6 +13,17 @@
 
   $gestionPromotion = new GestionPromotion();
 
+  if(isset($_GET['idPromo'])){ //mode update id de la table d'association service_promo
+    $id = $_GET['idPromo'];
+    $promotionOfService = $gestionPromotion->getPromotion($id);
+    $_SESSION['idPromo'] = $promotionOfService->getIdPromoService();
+    $update = true;
+  }
+  else{ //mode ajout
+    $promotionOfService = new Promotion(1,"","","","","","","","",$_GET['id']);
+    $update = false;
+  }
+
   $arrPromotion = $gestionPromotion->getAllPromotion();
 
 ?>
@@ -33,39 +44,88 @@
   </head>
   <body>
     <?php include '../entete/administrateur.php'?>
+    <?php
+      if(isset($_SESSION['error'])){
+        echo "<div class='error'>
+                <p>".$_SESSION['errorMsg'].
+              "</div>";
 
+        unset($_SESSION['error']);
+        unset($_SESSION['errorMsg']);
+      }
+     ?>
     <main>
       <div class="cours-d">
 
         <p class="cata-texte text-modif">Ajouter la période et un code pour appliquer la promotion choisie</p>
         <p class="msgService">Le code n'est pas obligatoire et ne sera pas exigé si le champ est vide.</p>
-        <form action="" method="post">
+        <form action="../phpscript/ajoutPromoService.php?id=<?php echo $_GET['id']; ?>" method="post">
           <div class="promo-haut">
             <div id="box" class="box">
-              <select id="selectPromo" onmouseover="changeToOrangeColor()" onmouseout="changeToWhiteColor()" name="promotion">
+              <select id="selectPromo" onmouseover="changeToOrangeColor()" onmouseout="changeToWhiteColor()" name="promotion[]" onchange="changeFunc();">
                 <?php
+                  if($update == false){
+                    echo "<option id='optionVide' value='vide' selected='selected'></option>";
+                  }
                   foreach($arrPromotion as $promotion){
-                    echo "<option value='".$promotion->getId()."'>".$promotion->getTitre()."</option>";
+                    if($update == true){
+                      if($promotion->getId() == $promotionOfService->getId()){
+                        echo "<option value='".$promotion->getId()."' selected='selected'>".$promotion->getTitre()."</option>";
+                      }
+                      else{
+                        echo "<option value='".$promotion->getId()."'>".$promotion->getTitre()."</option>";
+                      }
+                    }
+                    else{
+                      echo "<option value='".$promotion->getId()."'>".$promotion->getTitre()."</option>";
+                    }
                   }
                 ?>
               </select>
             </div>
 
             <label for="rabais">Rabais:</label>
-            <input type="text" name="rabais" value="<?php  ?>">
+            <?php
+              if($update == true){
+                $rabais = $promotionOfService->getRabais() * 100;
+                $rabaisTxt = $rabais . " %";
+                echo "<input type='text' name='rabais' id='rabais' value='".$rabaisTxt."' required>";
+              }
+              else{
+                echo "<input type='text' name='rabais' id='rabais' value='' required>";
+              }
+            ?>
+
           </div>
 
           <div class="promo-milieu">
             <p class="cata-texte text-modif">Période de la promotion</p>
             <div class="date">
-              <input id="startDate" type="date" name="startDate" value="">
-              <input id="endDate" type="date" name="endDate" value="">
+              <?php
+                if($update == true){
+                  echo "<input id='startDate' type='date' name='startDate' value='".$promotionOfService->getDateDebut()."' placeholder='Date de début' required>
+                        <input id='endDate' type='date' name='endDate' value='".$promotionOfService->getDateFin()."' placeholder='Date de fin' required>";
+                }
+                else{
+                  echo "<input id='startDate' type='date' name='startDate' value='' placeholder='Date de début' required>
+                        <input id='endDate' type='date' name='endDate' value='' placeholder='Date de fin' required>";
+                }
+
+              ?>
+
             </div>
           </div>
 
           <div class="code">
             <p class="cata-texte text-modif">Entrer un code s'il est requis pour appliquer la promotion lors de la création de la facture.</p>
-            <input type="text" id="code" name="code" value="">
+            <?php
+              if($update == true){
+                echo "<input type='text' id='code' name='code' value='".$promotionOfService->getCode()."'>";
+              }
+              else{
+                echo "<input type='text' id='code' name='code' value=''>";
+              }
+            ?>
           </div>
 
           <div class="button-contain">
