@@ -1,5 +1,5 @@
 .vingt_six_px{
-    font-size: 26px;
+  font-size: 26px;
 }
 
 .content{
@@ -34,6 +34,7 @@ input::placeholder{
 .forgot{
   color: #FF4A07;
   margin-left:50px;
+  cursor: pointer;
 }
 
 .buttons{
@@ -63,6 +64,51 @@ button{
   float:right;
   text-align:right;
 }
+
+.modal{
+  display:none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content{
+  display:block;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  margin: auto auto;
+  width: 40%;
+  text-align: center;
+}
+
+.close {
+  color: #000;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.4s;
+}
+.close:hover,
+.close:focus {
+  color: purple;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#loading-image{
+  display:none;
+}
+
 
 [class*="col"]{
   float:left;

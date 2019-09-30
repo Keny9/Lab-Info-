@@ -33,7 +33,7 @@ div .input_block{
   padding-bottom:20px;
 }
 
-input[type="text"] {
+input[type="text"], select {
   font-size:12px;
   box-sizing: border-box;
   width: 100%;

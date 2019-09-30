@@ -49,7 +49,7 @@
               </div>
 
               <div class='cata-droite'>
-                <p class='cata-titre'>".$service->getTitre()."</p><br>
+                <p class='cata-titre'>".$service->getTitre()."</p><br><br>
                 <p class='cata-texte'>".$service->getDescription()."</p>
               </div>
             </div>

@@ -48,6 +48,8 @@ else{
     $_SESSION['rue'] = $row['rue'];
     $_SESSION['code_postal'] = $row['code_postal'];
     $_SESSION['ville'] = $row['fk_ville'];
+    $_SESSION['telephone'] = $row['telephone'];
+    $_SESSION['code_postal'] = $row['code_postal'];
     echo "../page/catalogue.php";
   }
 }

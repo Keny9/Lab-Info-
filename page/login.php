@@ -11,8 +11,8 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
   <head>
     <meta charset="utf-8">
     <title>Authentification</title>
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../js/login.js"></script>
@@ -20,6 +20,23 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
 
   <body>
     <?php include '../entete/nonConnecter.php'; ?>
+
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <span id="modal-close"class="close">X</span>
+        <br><br>
+        <p class="vingt_six_px">
+          Inscrivez votre courriel pour envoyer une demande de mot de passe oublié.
+        </p>
+        <input type="text" id="emailOublie" placeholder="Courriel">
+        <button class="vingt_six_px center" type="button" id="confirmerOublie">Confirmer</button>
+        <br>
+      </div>
+      <img id="loading-image" src="../images/mickey.gif" alt="mickeymouse">
+    </div>
+
+
+
 
     <main>
       <div class="block-login">
@@ -30,7 +47,7 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
         <input type="text" id="email" placeholder="Courriel">
         <input type="password" id="password" placeholder="Mot de passe">
         <div class="left_align">
-        <a class="forgot" href="#">Mot de passe oublié</a>
+        <a class="forgot" id="forgot">Mot de passe oublié</a>
 
           <div class="buttons">
             <div class="login_contain">
