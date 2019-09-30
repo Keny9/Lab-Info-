@@ -24,7 +24,7 @@ function changeFunc(){
 
     if(this.readyState == 4 && this.status == 200){
       var data = JSON.parse(this.responseText);
-    //  console.log(data); //For debugging
+      console.log(data); //For debugging
 
       var list = document.getElementById("selectPromo");
       var value = list.options[list.selectedIndex].value;

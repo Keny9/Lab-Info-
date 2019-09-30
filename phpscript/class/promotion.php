@@ -53,14 +53,24 @@
       $this->code = $code;
     }
 
-    public function setDateFin($dateFin){ 
-      $date = substr($dateFin, 0, -9); //TODO :Gosser avec les dates, c'est pour ca que les dates disparaissents
-      $this->dateFin = $date;
+    public function setDateFin($dateFin){
+      if(strlen($dateFin) == 10){ //Si la date est deja transformer on fait rien
+        $this->dateFin = $dateFin;
+      }
+      else{ //sinon on coupe pour enlever les 0 a la fin de la date (format dans lequel ils sont dans la bd)
+        $date = substr($dateFin, 0, -9);
+        $this->dateFin = $date;
+      }
     }
 
     public function setDateDebut($dateDebut){
-      $date = substr($dateDebut, 0, -9);
-      $this->dateDebut = $date;
+      if(strlen($dateDebut) == 10){
+        $this->dateDebut = $dateDebut;
+      }
+      else{
+        $date = substr($dateDebut, 0, -9);
+        $this->dateDebut = $date;
+      }
     }
 
     public function setImage($image){

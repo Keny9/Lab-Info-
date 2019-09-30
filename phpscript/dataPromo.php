@@ -1,4 +1,6 @@
 <?php
+  mb_internal_encoding('UTF-8');
+  mb_http_output('UTF-8');
 
   require_once('./class/promotion.php');
   require_once('./class/gestionPromotion.php');
@@ -20,6 +22,6 @@
 
   $data = $gestionPromotion->getAllPromoData();
 
-  echo json_encode(utf8ize($data));
+  echo json_encode($data,JSON_UNESCAPED_UNICODE);
 
 ?>

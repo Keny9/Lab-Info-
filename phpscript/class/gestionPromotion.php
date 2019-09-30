@@ -106,6 +106,27 @@
       return $lastId;
     }
 
+    //Obtenir le dernier id dans la table promotion
+    public function getLastIdPromotion(){
+      $connexion = new Connexion();
+      $conn = $connexion->getConnexion();
+
+      $stmt = $conn->prepare("SELECT MAX(pk_promotion) FROM promotion;");
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+
+      if(!$result){
+        die('Could not query:' . mysqli_error());
+      }
+
+      $row = $result->fetch_assoc();
+      $lastId = $row['MAX(pk_promotion)'] + 1;
+
+      $stmt->close();
+      return $lastId;
+    }
+
     //Créer un nouveau lien dans la base de donnée
     public function addPromoService($idPromotion, $idServ, $date_debut, $date_fin, $code2){
       $connexion = new Connexion();
@@ -128,7 +149,7 @@
     }
 
     //Fonction qui permet de mettre à jour un une promo lier a un service
-    public function updatePromoService($promotion){ //TODO: Completer le update, faire en sorte que les dates s'update
+    public function updatePromoService($promotion){
       $connexion = new Connexion();
       $conn = $connexion->getConnexion();
 
@@ -144,6 +165,55 @@
       $date_fin = $promotion->getDateFin();
       $code = $promotion->getCode();
       $pk_promotion_code = $promotion->getIdPromoService();
+
+      $status = $stmt->execute();
+      /* check whether the execute() succeeded */
+      if ($status === false) {
+        trigger_error($stmt->error, E_USER_ERROR);
+      }
+
+      $stmt->close();
+    }
+
+    //Créer une nouvelle promotion
+    public function addPromotion($promotion){
+      $connexion = new Connexion();
+      $conn = $connexion->getConnexion();
+
+      $stmt = $conn->prepare("INSERT INTO promotion (pk_promotion, promotion_titre, promotion_description, rabais, image) VALUES (?, ?, ?, ?, ?);");
+
+      $stmt->bind_param("issds", $pk_promotion, $promotion_titre, $promotion_description, $rabais, $image);
+
+      $pk_promotion = $this->getLastIdPromotion();
+      $promotion_titre = $promotion->getTitre();
+      $promotion_description = $promotion->getDescription();
+      $rabais = $promotion->getRabais() / 100;
+      $image = null;
+
+      $status = $stmt->execute();
+
+      /* check whether the execute() succeeded */
+      if ($status === false) {
+        trigger_error($stmt->error, E_USER_ERROR);
+      }
+
+      $stmt->close();
+    }
+
+    //Mettre a jour une promotion
+    public function updatePromotion($promotion){
+      $connexion = new Connexion();
+      $conn = $connexion->getConnexion();
+
+      $stmt = $conn->prepare("UPDATE promotion
+                              SET promotion_titre = ?, rabais = ?
+                              WHERE pk_promotion = ?;");
+      $stmt->bind_param("sdi", $promotion_titre, $rabais, $pk_promotion);
+
+      //set parameters
+      $promotion_titre = $promotion->getTitre();
+      $rabais = $promotion->getRabais() / 100;
+      $pk_promotion = $promotion->getId();
 
       $status = $stmt->execute();
       /* check whether the execute() succeeded */

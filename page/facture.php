@@ -1,4 +1,9 @@
 <?php
+  require_once("../phpscript/class/facture.php");
+  require_once("../phpscript/class/gestionFacture.php");
+  require_once("../phpscript/class/classService.php");
+  require_once("../phpscript/class/gestionService.php");
+  require_once("../phpscript/class/GestionPromotion.php");
 
   session_start();
   // Si non logged in
@@ -8,12 +13,6 @@
   else if($_SESSION['user_administrateur'] == 0){
     header("Location:catalogue.php");
   } //Si administrateur
-
-  require_once("../phpscript/class/facture.php");
-  require_once("../phpscript/class/gestionFacture.php");
-  require_once("../phpscript/class/classService.php");
-  require_once("../phpscript/class/gestionService.php");
-  require_once("../phpscript/class/GestionPromotion.php");
 
   $gestionFacture = new GestionFacture();
   $gestionService = new GestionService();

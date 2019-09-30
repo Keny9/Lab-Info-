@@ -1,0 +1,61 @@
+#link-ajout-promo{
+  margin-left: 900px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.cours-d{
+  padding-top: 15px;
+}
+
+.promotion-block{
+  display: block;
+  padding: 5px;
+}
+.input-promotion{
+  display: block;
+}
+
+.promotion-block:hover{
+  border: 1px solid #09AAC1;
+}
+
+.titre-promo{
+  display: inline-block;
+  color: #000708;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 50px;
+  width: 700px;
+}
+
+.msg-input{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+
+.rabais-promo{
+  font-size: 20px;
+  color: #FF9F07;
+  font-weight: 600;
+}
+
+.input-nomPromo{
+  width: 350px;
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 50px;
+}
+
+.input-rabaisPromo{
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 50px;
+}
+
+.button-contain{
+  display: inline-block;
+  margin-top: 0;
+  margin-left: 250px;
+}

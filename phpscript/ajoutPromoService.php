@@ -10,8 +10,8 @@
     $idPromo = $_POST['promotion'][0]; //id de la promotion
     $idService = $_GET['id'];
     $rabais = $_POST['rabais'];
-    $startDate = date('Y-m-d', strtotime($_POST['startDate']));
-    $endDate = date('Y-m-d', strtotime($_POST['endDate']));
+    $startDate = $_POST['startDate'];
+    $endDate = $_POST['endDate'];
     $code = $_POST['code'];
 
     if($startDate <= $endDate){
@@ -24,7 +24,7 @@
       }
 
       unset($_SESSION['idPromo']);
-      //header("Location: ../page/service.php");
+      header("Location: ../page/service.php");
     }
     else{
       $_SESSION['error'] = 1;
