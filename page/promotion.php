@@ -51,11 +51,11 @@
           <div class="cours-d">
             <div class="input-promotion">
               <input id="input-nom" class="input-nomPromo" type="text" name="nomPromo" value="">
-              <input id="input-rabais" class="input-rabaisPromo" type="text" name="rabaisPromo" value="">
-              <input type="hidden" id="mode" name="mode" value="add"> <!--Mode lors de l'envoi du form soit en mode ajouter ou update (ajouter par defaut) -->
-              <input type="hidden" name="idPromotion" id="idPromotion" value=""> <!--ID de la promotion si en mode update -->
+              <input id="input-rabais" class="input-rabaisPromo" type="text" name="rabaisPromo" value="" maxlength="2" onfocusout="">
+              <input type="hidden" id="mode" name="mode" value="add">
+              <input type="hidden" name="idPromotion" id="idPromotion" value="">
               <div class="button-contain">
-                <button class="text-button" type="submit" id="ajout-promo" name="submit">Confirmer</button>
+                <button class="text-button" type="submit" id="ajout-promo" name="submit" onclick="return validateFormPromotion()">Confirmer</button>
               </div>
             </div>
           </div>

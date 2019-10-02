@@ -52,4 +52,39 @@ function ajoutPromo(){
   document.getElementById("idPromotion").value = "";
 }
 
-//Faire une fonction qui ajuste le rabais. ex: 0.40 en 40
+//Verifier le formulaire avant de submit
+function validateFormPromotion(){
+  nomPromo = document.getElementById("input-nom");
+  rabais = document.getElementById("input-rabais");
+
+  if(!checkRabaisIsInteger(rabais)){
+    return false;
+  }
+
+  if(!verifieTitre(nomPromo)){
+    return false;
+  }
+
+  return true;
+}
+
+//Verifie que le rabais entré est bel et bien un entier
+function checkRabaisIsInteger(e){
+
+  if(Number.isInteger(parseInt(e.value))){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+//Verifier le titre du rabais
+function verifieTitre(e){
+  var titreRegex = /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._'\s-]*$/;
+
+  if(titreRegex.test(e.value) == false){
+    return false;
+  }
+  return true;
+}
