@@ -4,12 +4,12 @@ $(document).ready(function(){
 });
 
 function actionCheckmark(){
-  if(document.getElementById("checkService").checked == true){
-    document.getElementById("checkService").checked = false;
+  if(document.getElementById("checkService").value == "verifier"){
+    document.getElementById("checkService").value = "pasVerifier";
     checkmark.setAttribute('data-content', "");
   }
-  else if(document.getElementById("checkService").checked == false){
-    document.getElementById("checkService").checked = true;
+  else if(document.getElementById("checkService").value == "pasVerifier"){
+    document.getElementById("checkService").value = "verifier";
     checkmark.setAttribute('data-content', "X");
   }
 }

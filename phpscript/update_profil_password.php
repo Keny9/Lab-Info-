@@ -78,5 +78,5 @@ $result = $conn->getConnexion()->query($sql);
 
 var_dump($result);
 echo $key_user." ".$prenom." ".$nom." ".$key_adresse." ".$telephone." ".$infolettre;
-header("LOCATION: http://localhost/Automne_2019/Lab1_HyperMed/page/login.php");
+header("Location: ../page/login.php");
 ?>

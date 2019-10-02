@@ -83,7 +83,7 @@
           </div>
 
           <div class="activer-service">
-            <input type="checkbox" id="checkService" name="actif-service" value="" checked="checked">
+            <input type="checkbox" id="checkService" name="actifService" value="verifier" checked>
             <span id="checkmark" class="checkmark" onclick="actionCheckmark()"></span>
             <span class="text-activer">Activer le service dans le catalogue</span>
           </div>

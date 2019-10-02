@@ -59,7 +59,6 @@
       <?php
         if($arrService != null){
           foreach($arrService as $service){
-            if($service->getActif() == 1){
               echo "
               <div class='cours-d'>
                 <div class='cata-haut'>
@@ -105,7 +104,6 @@
                 </div>
 
               </div>";
-            }
             $i++; //Incrementation de l'index
           }
         }

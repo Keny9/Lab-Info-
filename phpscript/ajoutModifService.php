@@ -12,7 +12,7 @@
     $prix = $_POST['prix'];
     $duree = $_POST['heure'];
 
-    if(isset($_POST['actif-service'])){
+    if(isset($_POST['actifService']) && $_POST['actifService'] == "verifier"){
       $actif = 1;
     }
     else {
@@ -32,18 +32,18 @@
 
     $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
-    if(in_array($fileActualExt, $allowed)){
-      if($fileError === 0){
+    if($fileError === 0 && $_FILES['file']['size'] != 0){
+      if(in_array($fileActualExt, $allowed)){
         if($fileSize < 250000){
           $fileNameNew = uniqid('', true).".".$fileActualExt;
           $fileDestination = '../uploads/services/'.$fileNameNew;
 
-          $service = new Service(1,$titre,$description,$duree,$prix,$actif,$fileDestination);
-
           if(isset($_SESSION['serviceId'])){
+            $service = new Service($_SESSION['serviceId']->getId(),$titre,$description,$duree,$prix,$actif,$fileDestination);
             $gestionService->updateService($service);
           }
           else{
+            $service = new Service(1,$titre,$description,$duree,$prix,$actif,$fileDestination);
             $gestionService->addService($service);
           }
 
@@ -60,15 +60,26 @@
       }
       else{
         $_SESSION['error'] = 1;
-        $_SESSION['errorMsg'] = 'Il y eu une erreur lors du téléversement du fichier.';
+        $_SESSION['errorMsg'] = 'Vous ne pouvez pas téléverser des fichiers de ce type!';
         headTo();
       }
     }
     else{
       $_SESSION['error'] = 1;
-      $_SESSION['errorMsg'] = 'Vous ne pouvez pas téléverser des fichiers de ce type!';
+      $_SESSION['errorMsg'] = 'Il y a eu une erreur lors du téléversement du fichier.';
       headTo();
     }
+
+    $service = new Service($_SESSION['serviceId']->getId(),$titre,$description,$duree,$prix,$actif,$_SESSION['serviceId']->getImage());
+
+    if(isset($_SESSION['serviceId'])){
+      $gestionService->updateService($service);
+      unset($_SESSION['serviceId']);
+    }
+    else{
+      $gestionService->addService($service);
+    }
+    header("Location: ../page/service.php");
   }
 
   //Rediriger comme il le faut
