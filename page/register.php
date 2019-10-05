@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link rel="stylesheet" href="../css/style.css">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/register.js"></script>
   </head>
   <body>

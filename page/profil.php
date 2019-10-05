@@ -7,16 +7,18 @@ if (!(isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')) {
 else if($_SESSION['user_administrateur'] == 0)
 // Est un client
 {
-  $nom = $_SESSION['nom'];
-  $prenom = $_SESSION['prenom'];
-  $telephone = $_SESSION['telephone'];
-  $no_civique = $_SESSION['no_civique'];
-  $rue = $_SESSION['rue'];
-  $ville = $_SESSION['ville'];
-  $courriel = $_SESSION['user_courriel'];
-  $password = $_SESSION['user_motDePasse'];
-  $infolettre = 1;//$_SESSION['infolettre'];
-  $code_postal = $_SESSION['code_postal'];
+  if(!isset($_SESSION['facebook_login'])){
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+    $telephone = $_SESSION['telephone'];
+    $no_civique = $_SESSION['no_civique'];
+    $rue = $_SESSION['rue'];
+    $ville = $_SESSION['ville'];
+    $courriel = $_SESSION['user_courriel'];
+    $password = $_SESSION['user_motDePasse'];
+    $infolettre = 1;//$_SESSION['infolettre'];
+    $code_postal = $_SESSION['code_postal'];
+  }
 }
 else // est un admin
 {
@@ -36,7 +38,7 @@ else // est un admin
     <link rel="stylesheet" type="text/css" href="../css/register.css">
     <link rel="stylesheet" href="../css/style.css">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/register.js"></script>
     <script type="text/javascript" src="../js/entete.js"></script>
   </head>

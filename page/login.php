@@ -14,11 +14,14 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/login.css">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/login.js"></script>
   </head>
 
   <body>
+    <script type="text/javascript" src="../js/facebookLogin.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=511524552961112&autoLogAppEvents=1"></script>
     <?php include '../entete/nonConnecter.php'; ?>
 
     <div class="modal" id="modal">
@@ -58,13 +61,15 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
               <button class="vingt_six_px" type="button" href="register.php" id="register">S'inscrire</button>
             </div>
 
-
-          </div>
-
-          <div class="">
-            <!-- login with facebook -->
           </div>
         </div>
+
+        <div class="">
+          <fb:login-button class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+        </div>
+
+        <div id="status"></div>
+
       </div>
     </main>
 

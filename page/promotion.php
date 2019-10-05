@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/serviceModification.css">
     <link rel="stylesheet" href="../css/promotion.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/entete.js"></script>
     <script type="text/javascript" src="../js/promotion.js"></script>
     <title>Promotion</title>

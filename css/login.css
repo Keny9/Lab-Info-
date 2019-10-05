@@ -109,6 +109,16 @@ button{
   display:none;
 }
 
+.fb-login-button{
+  margin-left: 110px;
+  margin-top: 20px;
+}
+
+#status{
+  margin-top: 10px;
+  margin-left: 118px;
+}
+
 
 [class*="col"]{
   float:left;
