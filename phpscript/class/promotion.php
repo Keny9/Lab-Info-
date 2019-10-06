@@ -16,7 +16,8 @@
     private $dateFin;
     private $code; //Si promo est appliqué sur un service
     private $service; //Service auquel la promotion est associé s'il y a lieu (ID)
-
+    private $services;
+        
     /**
     * Constructeur d'une promotion
     */
@@ -123,6 +124,13 @@
 
     public function getRabais(){
       return $this->rabais;
+    }
+    
+    public function setServices($val){
+      $this->services = $val;
+    }
+    public function getServices(){
+      return $this->services;
     }
   }
  ?>

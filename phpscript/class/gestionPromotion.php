@@ -246,5 +246,47 @@
       }
       return $data;
     }
+    
+    
+    
+    public function getAllPromotionWithServices(){
+      $connexion = new Connexion();
+      $conn = $connexion->getConnexion();
+      $stmt = $conn->prepare("SELECT * FROM promotion;");
+      $stmt->execute();
+      $result = $stmt->get_result();
+      if($result->num_rows == 0){
+        $arrPromotion = null;
+        return $arrPromotion;
+      }
+      while($row = $result->fetch_assoc()){
+        $arrPromotion[] = new Promotion($row['pk_promotion'],null,$row['promotion_titre'],$row['promotion_description'],$row['rabais'],$row['image'],null,null,null,null);
+      }
+
+      $stmt = $conn->prepare("SELECT s.service_titre, ta.fk_promotion FROM service AS s
+        INNER JOIN ta_promotion_service AS ta ON ta.fk_service = s.pk_service;");
+      $stmt->execute();
+      $result = $stmt->get_result();
+      if($result->num_rows == 0){
+        $arrService = null;
+        return $arrService;
+      }
+      while($row = $result->fetch_assoc()){
+        $arrService[] = new Service($row['fk_promotion'],$row['service_titre'],null,null,null,null,null,null);
+      }
+
+      foreach($arrPromotion as $promotion){
+        $arrayService = array();
+        foreach($arrService as $service){
+          if($promotion->getId() == $service->getId()){
+            array_push($arrayService, $service->getTitre());
+          }
+        }
+        $promotion->setServices($arrayService);
+      }
+      $stmt->close();
+      return $arrPromotion;
+
+    }
   }
  ?>

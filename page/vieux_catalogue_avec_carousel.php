@@ -4,11 +4,13 @@
   require_once('../phpscript/class/gestionPromotion.php');
   require_once('../phpscript/class/promotion.php');
 
+  $gestionService = new GestionService();
   $gestionPromotion = new GestionPromotion();
+
+  $arrService = $gestionService->getAllService();
   $arrPromotion = $gestionPromotion->getAllPromotionWithServices();
 
   session_start();
-
   // Si non logged in
   if (!(isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')) {
     $header = '../entete/nonConnecter.php';
@@ -20,14 +22,6 @@
     $header = '../entete/client.php';
   } // Si client
 
-  $gestionService = new GestionService();
-
-  if(isset($_POST['recherche']) && "" != trim($_POST['recherche'])){
-      $arrService = $gestionService->getServiceBySearch($_POST['recherche']);
-  }
-  else{
-    $arrService = $gestionService->getAllService();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -36,16 +30,17 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carousel.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="../js/entete.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/carousel.js"></script>
     <title>Info++</title>
   </head>
   <body>
     <?php include $header/*'../entete/client.php';*/ ?>
 
+
     <main>
-    <div class="carousel">
+      <div class="carousel">
         <div class="defilement-container">
           <div class="spacer"></div>
           <div id="carouselPrevious"class="carousel-bouton">
@@ -87,45 +82,31 @@
           </div>
         </div>
       </div>
+
       <?php
-      if($arrService != null){
         foreach($arrService as $service){
-          if($service->getActif() == 1){
-            echo
-            "<div class='cours-d'>
-                <div class='cata-haut'>
-                <div class='cata-gauche'>
-                  <img src='".$service->getImage()."' alt='Magic Name'><br>
-                </div>
+          echo "<div class='cours-d'>
+            <div class='cata-gauche'>
+              <img src='".$service->getImage()."' alt='Excel Debutant'><br>
+            </div>
 
-                <div class='cata-droite'>
-                  <p class='cata-titre'>".$service->getTitre()."</p><br><br>
-                  <p class='cata-texte'>".$service->getDescription()."</p>
-                </div>
-              </div>
+            <div class='cata-droite'>
+              <p class='cata-titre'>".$service->getTitre()."</p><br>
+              <p class='cata-texte'>".$service->getDescription()."</p>
+            </div>
 
-              <div class='cata-vide'></div>
+            <div class='cata-tarif'>
+              <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
+            </div>
 
-              <div class='cata-detail'>
-                <div class='cata-tarif'>
-                  <p class='cata-texte'>Tarif: ".$service->getTarif()."$</p>
-                </div>
+            <div class='cata-duree'>
+              <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
+            </div>
 
-                <div class='cata-duree'>
-                  <p class='cata-texte'>Durée: ".$service->getDuree()."h</p>
-                </div>
-              </div>
+            <img src='../images/icones/panier.png' alt='Panier' id='panier'>
 
-              <img src='../images/icones/panier.png' alt='Panier' class='panier'>
-
-            </div>";
-          }
+          </div>";
         }
-      }
-      else{
-        echo "<p class='cata-texte'>Désolé, aucun service correspond à la recherche.</p>";
-      }
-
 
       ?>
 
