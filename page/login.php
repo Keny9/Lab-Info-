@@ -38,9 +38,6 @@ if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
       <img id="loading-image" src="../images/mickey.gif" alt="mickeymouse">
     </div>
 
-
-
-
     <main>
       <div class="block-login">
         <p class="vingt_six_px">

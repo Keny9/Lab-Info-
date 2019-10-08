@@ -34,6 +34,11 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta property="og:url"           content="https://localhost/AppMedia/page/catalogue.php" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Info++ Catalogue" />
+    <meta property="og:description"   content="Venez apprendre avec les divers cours offert par Info++." />
+    <meta property="og:image"         content="https://localhost/AppMedia/images/icones/logo.png" />
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carousel.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

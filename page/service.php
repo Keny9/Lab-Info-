@@ -45,17 +45,36 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta property="og:url"           content="https://localhost/AppMedia/page/catalogue.php" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Info++" />
+    <meta property="og:description"   content="Venez apprendre avec les divers cours offert par Info++." />
+    <meta property="og:image"         content="https://localhost/AppMedia/images/icones/logo.png" />
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/entete.js"></script>
+    <script type="text/javascript" src="../js/facebookShare.js"></script>
     <title>Info++</title>
   </head>
   <body>
     <?php include '../entete/administrateur.php'?>
 
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v4.0&appId=511524552961112&autoLogAppEvents=1"></script>
+
     <main>
-      <a class="link-service" href="./serviceModification.php">Ajouter un service</a>
+      <div class="entete-service">
+        <span class="partage">
+          <span class="txt-partage">
+            <p class="cata-texte">Partager le catalogue</p>
+          </span>
+        <div class="fb-share-button" data-href="https://www.rds.ca" data-layout="button" data-size="small">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.rds.ca%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a>
+        </div>
+        </span>
+        <a class="link-service" href="./serviceModification.php">Ajouter un service</a>
+      </div>
       <?php
         if($arrService != null){
           foreach($arrService as $service){

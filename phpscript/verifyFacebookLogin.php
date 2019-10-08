@@ -13,7 +13,21 @@
 
   $_SESSION['user_courriel'] = $courriel;
   $_SESSION['user_administrateur'] = 0;
-  $_SESSION['facebook_login'] = 1;
+  $_SESSION['facebook_login'] = 1; //Connecter avec facebook
+  $_SESSION['fb_profile'] = 0;
+
+  if($user != null){ //la personne a un profile Info++
+    $profile = $gestionUser->getProfile($user->getId());
+    $_SESSION['nom'] = $profile->getNom();
+    $_SESSION['prenom'] = $profile->getPrenom();
+    $_SESSION['telephone'] = $profile->getTelephone();
+    $_SESSION['no_civique'] = $profile->getNoCivique();
+    $_SESSION['rue'] = $profile->getRue();
+    $_SESSION['ville'] = $profile->getVille();
+    $_SESSION['user_motDePasse'] = 'tu le sauras jamais';
+    $_SESSION['code_postal'] = $profile->getCodePostal();
+    $_SESSION['fb_profile'] = 1;
+  }
 
   echo json_encode($user);
 

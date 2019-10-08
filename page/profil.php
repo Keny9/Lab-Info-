@@ -7,7 +7,20 @@ if (!(isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')) {
 else if($_SESSION['user_administrateur'] == 0)
 // Est un client
 {
-  if(!isset($_SESSION['facebook_login'])){
+  if(isset($_SESSION['fb_profile']) && $_SESSION['fb_profile'] != 1) //pas de profile
+  {
+    $nom = null;
+    $prenom = null;
+    $telephone = null;
+    $no_civique = null;
+    $rue = null;
+    $ville = null;
+    $courriel = null;
+    $password = null;
+    $infolettre = null;
+    $code_postal = null;
+  }
+  else{
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
     $telephone = $_SESSION['telephone'];
