@@ -19,8 +19,13 @@ window.fbAsyncInit = function() {
  }(document, 'script', 'facebook-jssdk'));
 
  function logout(){
-		FB.logout();
-    window.location.href = "../page/login.php";
+   FB.getLoginStatus(function(response){
+     if(response.status === 'connected'){
+       FB.logout(function(response){
+         window.location.href = "../page/login.php";
+       });
+     }
+   });
 	}
 
 //Changer la couleur du lien de la page actuelle

@@ -21,7 +21,7 @@ class Profile{
     $this->setRue($rue);
     $this->setVille($ville);
     $this->setCodePostal($codePostal);
-    $this->infoLettre($infoLettre);
+    $this->setInfoLettre($infoLettre);
   }
 
   public function setPk($pk){
@@ -54,11 +54,11 @@ class Profile{
   }
 
   public function setCodePostal($codePostal){
-    $this->ville = $ville;
+    $this->codePostal = $codePostal;
   }
 
   public function setInfoLettre($infoLettre){
-    $this->ville = $ville;
+    $this->infoLettre = $infoLettre;
   }
 
   public function getPk(){

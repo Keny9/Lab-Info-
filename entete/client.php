@@ -6,7 +6,7 @@
       <a class="link" href="construction.php">Mon panier (0)</a>
       <?php
         if(isset($_SESSION['facebook_login']) && $_SESSION['facebook_login'] == 1){
-          echo "<a class='link' href='login.php' onclick='logout();' id='disconnect'>Se déconnecter</a>";
+          echo "<a class='link' onclick='logout();' id='disconnect-facebook'>Se déconnecter</a>";
         }
         else{
           echo "<a class='link' href='login.php' id='disconnect'>Se déconnecter</a>";

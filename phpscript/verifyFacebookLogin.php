@@ -1,6 +1,7 @@
 <?php
   require_once($_SERVER['DOCUMENT_ROOT'].'/AppMedia/phpscript/class/GestionUser.php');
   require_once($_SERVER['DOCUMENT_ROOT'].'/AppMedia/phpscript/class/user.php');
+  require_once($_SERVER['DOCUMENT_ROOT'].'/AppMedia/phpscript/class/profile.php');
 
   session_start();
 
@@ -17,7 +18,7 @@
   $_SESSION['fb_profile'] = 0;
 
   if($user != null){ //la personne a un profile Info++
-    $profile = $gestionUser->getProfile($user->getId());
+    $profile = $gestionUser->getProfile($user->getPk());
     $_SESSION['nom'] = $profile->getNom();
     $_SESSION['prenom'] = $profile->getPrenom();
     $_SESSION['telephone'] = $profile->getTelephone();
@@ -27,6 +28,9 @@
     $_SESSION['user_motDePasse'] = 'tu le sauras jamais';
     $_SESSION['code_postal'] = $profile->getCodePostal();
     $_SESSION['fb_profile'] = 1;
+  }
+  else{
+    $gestionUser->addUserFacebook($id,$courriel); //Inscrire en tant que nouveau user
   }
 
   echo json_encode($user);

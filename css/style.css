@@ -41,6 +41,11 @@ main{
   margin: 15px 35px;
 }
 
+#disconnect-facebook{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .link{
   color: #FFFAFB;
   padding: 10px;

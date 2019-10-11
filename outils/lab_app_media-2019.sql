@@ -573,4 +573,4 @@ SELECT MAX(pk_service) FROM service;
 SELECT c.pk_client, c.fk_utilisateur, c.prenom, c.nom, c.telephone, c.infolettre, a.no_civique, a.rue, a.code_postal, a.fk_ville
                               FROM client AS c
                               INNER JOIN adresse AS a  ON c.fk_adresse = a.pk_adresse
-                              WHERE c.fk_utilisateur = 4;
+                              WHERE c.fk_utilisateur = 2147483647;
