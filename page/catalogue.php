@@ -44,10 +44,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/entete.js"></script>
     <script type="text/javascript" src="../js/carousel.js"></script>
+    <script type="text/javascript" src="../js/catalogue.js"></script>
     <title>Info++</title>
   </head>
   <body>
-    <?php include $header/*'../entete/client.php';*/ ?>
+    <?php include $header?>
 
     <main>
     <div class="carousel">
@@ -102,7 +103,7 @@
                 <div class='cata-gauche'>
                   <img src='".$service->getImage()."' alt='Magic Name'><br>
                 </div>
-
+                <input type='hidden' id='idService".$service->getId()."' value='".$service->getId()."'>
                 <div class='cata-droite'>
                   <p class='cata-titre'>".$service->getTitre()."</p><br><br>
                   <p class='cata-texte'>".$service->getDescription()."</p>
@@ -121,7 +122,7 @@
                 </div>
               </div>
 
-              <img src='../images/icones/panier.png' alt='Panier' class='panier'>
+              <img src='../images/icones/panier.png' alt='Panier' class='panier' onclick='ajoutService(".$service->getId().");'>
 
             </div>";
           }

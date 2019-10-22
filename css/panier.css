@@ -1,0 +1,51 @@
+span{
+  display: inline-block;
+}
+
+hr{
+  margin: 5px 20px 0 20px;
+}
+
+.titre-panier{
+  display: inline-block;
+  width: 995px;
+  font-size: 26px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.article{
+  margin-top: 10px;
+}
+
+.article-1{
+  margin-left: 20px;
+}
+
+.titre-article{
+  min-width: 400px;
+}
+
+.qty{
+  width: 510px;
+}
+
+.prix{
+  width: 75px;
+  text-align: right;
+}
+
+.promo{
+  width: 700px;
+}
+
+.prix-promo{
+  color: #FF4A07;
+  width: 330px;
+  text-align: right;
+}
+
+.montant{
+  width: 330px;
+  text-align: right;
+}

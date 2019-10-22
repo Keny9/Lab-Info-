@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['qty'] = 0;
 //Si un utilisateur était précédemment connecté
 if((isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')){
   session_destroy();
