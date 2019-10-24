@@ -5,7 +5,8 @@
   session_start();
 
   if(isset($_SESSION['panier'])){
-    //print_r($_SESSION['panier']);
+    $panier = $_SESSION['panier'];
+    print_r($_SESSION['panier']);
   }
 
   // Si non logged in
@@ -17,8 +18,6 @@
   } //Si administrateur
 
   $gestionPromotion = new GestionPromotion();
-
-  $panier = $_SESSION['panier'];
 
   $sousTotal = 0;
 
@@ -44,37 +43,37 @@
          <span>Prix</span>
          <hr>
          <?php
+         if(isset($_SESSION['panier'])){
+
 
           foreach ($panier as $item){
+            $arrPromotion = $gestionPromotion->getPromotionOfService($item->getId());
             echo "<div class='article'>
               <span class='article-1 titre-article'>".$item->getTitre()."</span>
               <span><label for='qty'>Qty : </label></span>
-              <span class='qty'><input type='number' name='qty' value='1' min='1' id='qty".$item->getId()."' onchange='changePanier(".$item->getId().");'></span>
-              <span id='prix".$item->getId()."' class='prix'>".$item->getTarif()."$</span>
-              <input type='hidden' name='prixArticle' value='".$item->getTarif()."' id='prixArticle".$item->getId()."' >
+              <span class='qty'><input type='number' name='qty' value='".$item->getQty()."' min='1' id='qty".$item->getId()."' onchange='changePanier(".$item->getId().");'></span>
+              <span id='prix".$item->getId()."' class='prix'>".number_format($item->getTarif() * $item->getQty(),2)."$</span>
+              <input type='hidden' name='prixArticle' value='".$item->getTarif()."' id='prixArticle".$item->getId()."'>
             </div>";
-            $sousTotal += $item->getTarif();
-          }
-          ?>
-          <hr>
-          <p class="titre-panier">Promotions</p>
-
-          <?php
-            foreach($panier as $item){
-              $arrPromotion = $gestionPromotion->getPromotionOfService($item->getId());
+            $sousTotal += ($item->getTarif() * $item->getQty());
 
               if($arrPromotion != null){
                 foreach($arrPromotion as $promotion){
                   $rabais = ($item->getTarif() * $promotion->getRabais());
+                  echo "<input type='hidden' name='prixArticle' value='".$item->getTarif()."' id='prixArticle".$item->getId()."'>";
                   $sousTotal -= number_format($rabais,2);
-                  echo" <div class='article'>
+                  echo" <div class='article promotion".$item->getId()."'>
                     <span class='article-1 promo'>".$promotion->getTitre()."</span>
                     <span class='prix prix-promo'>-".number_format($rabais,2)."$</span>
+                    <input type='hidden' name='prixArticle' class='rabaisPromo' value='".$promotion->getRabais()."' id='prixPromo".$promotion->getId()."'>
                   </div>";
                 }
               }
-            }
+              echo "<hr>";
+          }
+
             echo "<input type='hidden' id='sousTotal' name='sousTotal' value='".$sousTotal."'>";
+          }
           ?>
 
           <?php
@@ -83,7 +82,6 @@
             $total = $sousTotal + $tps + $tvq;
           ?>
 
-          <hr>
           <div class="article">
             <span class="article-1 promo"></span>
             <span class="montant">TPS: <span id="tps">5,50</span>$</span>

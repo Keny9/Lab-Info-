@@ -19,7 +19,7 @@ class GestionService{
     }
     else{
       while($row = mysqli_fetch_assoc($result)){
-        $service[] = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image']);
+        $service[] = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image'],0);
       }
     }
 
@@ -41,7 +41,7 @@ class GestionService{
     if($result->num_rows == 0) exit('Pas de ligne');
 
     $row = $result->fetch_assoc();
-    $service = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image']);
+    $service = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image'],0);
 
     $stmt->close();
 
@@ -62,7 +62,7 @@ class GestionService{
     if($result->num_rows == 0) $service = null;
 
     while($row = mysqli_fetch_assoc($result)){
-      $service[] = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image']);
+      $service[] = new Service($row['pk_service'],$row['service_titre'],$row['service_description'],$row['duree'],$row['tarif'],$row['actif'],$row['image'],0);
     }
 
     $stmt->close();

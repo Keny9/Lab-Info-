@@ -3,7 +3,7 @@
     <img src="../images/icones/logo.png" alt="Logo" id="logo">
 
     <div class="identification">
-      <a class="link" href="../page/panier.php">Mon panier (<span id="qty"><?php if(isset($_SESSION['qty'])){echo $_SESSION['qty'];}  ?></span>)</a>
+      <a class="link" href="../page/panier.php">Mon panier (<span id="qty"><?php if(isset($_SESSION['qty'])){echo $_SESSION['qty'];}else{echo "0";}  ?></span>)</a>
       <?php
         if(isset($_SESSION['facebook_login']) && $_SESSION['facebook_login'] == 1){
           echo "<a class='link' onclick='logout();' id='disconnect-facebook'>Se déconnecter</a>";

@@ -5,28 +5,42 @@ $(document).ready(function(){
 
 //Recalculer les montants du panier
 function calculMontant(){
-  tps = Math.round((sousTotal * (5/100))*100)/100;
-  tvq = Math.round((sousTotal * (9.975/100))*100)/100;
-  total = sousTotal + tps + tvq;
+  tps = (sousTotal * (5/100));
+  tvq = (sousTotal * (9.975/100));
+  total = (sousTotal + tps + tvq);
 
-  $("#tvq").text(tvq);
-  $("#tps").text(tps);
-  $("#total").text(total);
+  $("#tvq").text(Math.round(tvq *100)/100);
+  $("#tps").text(Math.round(tps *100)/100);
+  $("#total").text(Math.round(total *100)/100);
 }
 
 function changePanier(idItem){
+  var valuePromo = []; //Valeur initiale des rabais
   qty = $("#qty" + idItem).val() * 1;
   montant = $("#prixArticle" + idItem).val() *1;
-  console.log(qty);
-  console.log(montant);
 
-  nouveauMontant = Math.round((qty * montant)*100)/100;
+  nouveauMontant = (qty * montant);
+  sousTotal = sousTotal - parseInt($("#prix" + idItem).text())  + nouveauMontant;
 
-  $("#prix" + idItem).text(nouveauMontant);
+  $(".promotion" + idItem).children("input.rabaisPromo").each(function(){
+    console.log($(this).val());
+    valuePromo.push($(this).val());
+  });
 
-  sousTotal = sousTotal - montant + nouveauMontant;
-  console.log(nouveauMontant);
-  console.log(sousTotal);
+  $(".promotion" + idItem).children("span.prix-promo").each(function(index){
+    rabais = valuePromo[index] * parseInt($("#prix" + idItem).text());
+    nouveauRabais = valuePromo[index] * nouveauMontant;
+
+    sousTotal = sousTotal + rabais - nouveauRabais;
+
+    $(this).text("-" + (nouveauRabais).toFixed(2) + "$");
+  });
+
+  $("#prix" + idItem).text((nouveauMontant.toFixed(2) + "$"));
+
+  console.log("Montant: " + montant);
+  console.log("Nouveau montant:" + nouveauMontant);
+  console.log("Sous-total:" + sousTotal);
 
   calculMontant();
 }

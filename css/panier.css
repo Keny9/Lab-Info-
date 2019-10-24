@@ -24,6 +24,7 @@ hr{
 
 .titre-article{
   min-width: 400px;
+  font-weight: bold;
 }
 
 .qty{

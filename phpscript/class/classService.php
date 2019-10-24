@@ -9,11 +9,12 @@ class Service{
   private $tarif;
   private $actif;
   private $image;
+  private $qty;
 
   /**
   * Constructeur d'un service
   */
-  function __construct($id,$titre,$description,$duree,$tarif,$actif,$image){
+  function __construct($id,$titre,$description,$duree,$tarif,$actif,$image,$qty){
     $this->setId($id);
     $this->setTitre($titre);
     $this->setDescription($description);
@@ -21,6 +22,15 @@ class Service{
     $this->setTarif($tarif);
     $this->setActif($actif);
     $this->setImage($image);
+    $this->setQty($qty);
+  }
+
+  public function setQty($qty){
+    $this->qty = $qty;
+  }
+
+  public function getQty(){
+    return $this->qty;
   }
 
   public function setId($id){
