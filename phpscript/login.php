@@ -1,4 +1,5 @@
 <?php
+session_start();
 $conn = mysqli_connect("localhost", "root", "","lab1_hypermedia");
 if ($conn->connect_error) {
   echo "error";

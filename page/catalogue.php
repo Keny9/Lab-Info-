@@ -8,7 +8,14 @@
   $arrPromotion = $gestionPromotion->getAllPromotionWithServices();
 
   session_start();
-
+  if(!isset($_SESSION['sousTotal']) || !isset($_SESSION['total']) || !isset($_SESSION['qty'])){
+    $_SESSION['sousTotal'] = 0;
+    $_SESSION['tps'] = 0;
+    $_SESSION['tvq'] = 0;
+    $_SESSION['total'] = 0;
+    $_SESSION['qty'] = 0;
+  }
+  
   // Si non logged in
   if (!(isset($_SESSION['user_courriel']) && $_SESSION['user_courriel'] != '')) {
     $header = '../entete/nonConnecter.php';

@@ -4,8 +4,12 @@ function ajoutService(id){
     url: '../phpscript/ajoutPanier.php',
     type: 'POST',
     dataType: 'json',
-    data: ({id: $('#idService' + id).val()})
-  }).done(function(qty){
-    $('#qty').html(qty);
+    data: ({id: $('#idService' + id).val()}),
+    success: function(response){
+      $("#qty").text(response);
+    },
+    error: function(response){
+      console.log(response);
+    }
   });
 }
